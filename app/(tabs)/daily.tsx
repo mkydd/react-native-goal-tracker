@@ -73,7 +73,7 @@ const daily = () => {
 
   return (
     <View style={styles.container}>
-      <SafeAreaView>
+      <SafeAreaView style={styles.safeView}>
         <FlatList
           data={goals}
           renderItem={renderItem}
@@ -91,6 +91,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 2,
+  },
+  safeView: {
+    flex: 1,
   },
   listItem: {
     width: "48%",
