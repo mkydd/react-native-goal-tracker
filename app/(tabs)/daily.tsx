@@ -90,20 +90,20 @@ export default daily;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    margin: 5,
+    padding: 2,
   },
   listItem: {
-    width: "50%",
+    width: "48%",
+    margin: "1%",
     aspectRatio: 1,
     borderWidth: 1,
     borderRadius: 25,
-    marginBottom: 5,
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "pink",
   },
   row: {
-    gap: 5,
+    // gap: "2%",
   },
 });
