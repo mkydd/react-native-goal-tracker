@@ -56,8 +56,6 @@ const daily = () => {
       goalToUpdate.completed = !goalToUpdate.completed;
     }
 
-    console.log("newGoals =", newGoals);
-
     setGoals(newGoals);
   }
 
