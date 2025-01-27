@@ -12,7 +12,7 @@ import {
   addGoal,
   decrement,
   incrementByAmount,
-} from "../src/store/slices/goalsSlice";
+} from "./src/store/slices/goalsSlice";
 
 type ItemData = {
   name: string;
@@ -20,52 +20,17 @@ type ItemData = {
   completed: boolean;
 };
 
-const daily = () => {
-  const [goals, setGoals] = useState([
-    {
-      name: "stretch",
-      timeLine: "daily",
-      completed: false,
-    },
-    {
-      name: "read",
-      timeLine: "daily",
-      completed: false,
-    },
-    {
-      name: "workout",
-      timeLine: "daily",
-      completed: false,
-    },
-    {
-      name: "run",
-      timeLine: "daily",
-      completed: false,
-    },
-    {
-      name: "eat healthy",
-      timeLine: "daily",
-      completed: false,
-    },
-    {
-      name: "walk",
-      timeLine: "daily",
-      completed: false,
-    },
-  ]);
-
+const App = () => {
   const allGoals = useSelector((state: any) => state.goals.allGoals);
   const dispatch = useDispatch();
 
   function changeCompleted(item: ItemData) {
-    let newGoals = [...goals];
-    const goalToUpdate = newGoals.find((goal) => goal.name === item.name);
-
-    if (goalToUpdate) {
-      goalToUpdate.completed = !goalToUpdate.completed;
-    }
-
-    setGoals(newGoals);
+    //       let newGoals = [...goals];
+    //       const goalToUpdate = newGoals.find((goal) => goal.name === item.name);
+    //       if (goalToUpdate) {
+    //         goalToUpdate.completed = !goalToUpdate.completed;
+    //       }
+    //       setGoals(newGoals);
   }
 
   const renderItem = ({ item }: { item: ItemData }) => {
@@ -94,7 +59,7 @@ const daily = () => {
   );
 };
 
-export default daily;
+export default App;
 
 const styles = StyleSheet.create({
   container: {
