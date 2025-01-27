@@ -52,8 +52,17 @@ const exampleSlice = createSlice({
     addGoal: (state, action) => {
       state.allGoals.push(action.payload);
     },
-    decrement: (state) => {
-      //   state.value -= 1;
+    changeCompleted: (state, action) => {
+      let newGoals = [...state.allGoals];
+
+      const goalToUpdate = newGoals.find(
+        (goal) => goal.name === action.payload.name
+      );
+      if (goalToUpdate) {
+        goalToUpdate.completed = !goalToUpdate.completed;
+      }
+
+      state.allGoals = newGoals;
     },
     incrementByAmount: (state, action) => {
       //   state.value += action.payload;
@@ -61,6 +70,7 @@ const exampleSlice = createSlice({
   },
 });
 
-export const { addGoal, decrement, incrementByAmount } = exampleSlice.actions;
+export const { addGoal, changeCompleted, incrementByAmount } =
+  exampleSlice.actions;
 
 export default exampleSlice.reducer;

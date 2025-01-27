@@ -10,7 +10,7 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   addGoal,
-  decrement,
+  changeCompleted,
   incrementByAmount,
 } from "./src/store/slices/goalsSlice";
 
@@ -24,18 +24,12 @@ const App = () => {
   const allGoals = useSelector((state: any) => state.goals.allGoals);
   const dispatch = useDispatch();
 
-  function changeCompleted(item: ItemData) {
-    //       let newGoals = [...goals];
-    //       const goalToUpdate = newGoals.find((goal) => goal.name === item.name);
-    //       if (goalToUpdate) {
-    //         goalToUpdate.completed = !goalToUpdate.completed;
-    //       }
-    //       setGoals(newGoals);
-  }
-
   const renderItem = ({ item }: { item: ItemData }) => {
     return (
-      <Pressable style={styles.listItem} onPress={() => changeCompleted(item)}>
+      <Pressable
+        style={styles.listItem}
+        onPress={() => dispatch(changeCompleted(item))}
+      >
         <Text
           style={[item.completed ? { textDecorationLine: "line-through" } : {}]}
         >
