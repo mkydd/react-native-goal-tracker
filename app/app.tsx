@@ -59,6 +59,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 2,
+    backgroundColor: "black",
   },
   safeView: {
     flex: 1,
