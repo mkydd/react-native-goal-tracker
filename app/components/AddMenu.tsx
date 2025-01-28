@@ -1,5 +1,6 @@
 import { Pressable, StyleSheet, Text, View, TextInput } from "react-native";
 import React, { useState } from "react";
+import { RadioButton, Text as PaperText } from "react-native-paper";
 
 interface AddMenuProps {
   display: boolean;
@@ -28,14 +29,28 @@ const AddMenu = (props: AddMenuProps) => {
           <TextInput
             onChangeText={(text) => setNewGoal({ ...newGoal, name: text })}
           ></TextInput>
-          <TextInput
-            onChangeText={(text) => {
-              if (["daily", "monthly", "yearly"].includes(text)) {
-                console.log("timeline =", text);
-                setNewGoal({ ...newGoal, timeLine: text as Goal["timeLine"] });
-              }
-            }}
-          ></TextInput>
+          {["daily", "monthly", "yearly"].map((option) => (
+            <View
+              key={option}
+              style={{
+                flexDirection: "row",
+                alignItems: "center",
+                marginBottom: 10,
+              }}
+            >
+              <RadioButton
+                value={option}
+                status={newGoal.timeLine === option ? "checked" : "unchecked"}
+                onPress={() =>
+                  setNewGoal({
+                    ...newGoal,
+                    timeLine: option as Goal["timeLine"],
+                  })
+                }
+              />
+              <Text>{option}</Text>
+            </View>
+          ))}
           <Pressable onPress={() => console.log("newgoal =", newGoal)}>
             <Text>Print new goal</Text>
           </Pressable>
