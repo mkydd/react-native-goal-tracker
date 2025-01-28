@@ -13,6 +13,7 @@ import {
   changeCompleted,
   incrementByAmount,
 } from "./src/store/slices/goalsSlice";
+import AddMenu from "./components/AddMenu";
 
 type ItemData = {
   name: string;
@@ -21,6 +22,7 @@ type ItemData = {
 };
 
 const App = () => {
+  const [showAddMenu, setShowAddMenu] = useState<boolean>(false);
   const allGoals = useSelector((state: any) => state.goals.allGoals);
   const dispatch = useDispatch();
 
@@ -41,6 +43,8 @@ const App = () => {
 
   return (
     <View style={styles.container}>
+      <AddMenu display={showAddMenu} setDisplay={setShowAddMenu} />
+
       <SafeAreaView style={styles.safeView}>
         <FlatList
           data={allGoals}
