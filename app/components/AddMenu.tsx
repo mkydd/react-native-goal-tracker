@@ -19,12 +19,16 @@ const AddMenu = (props: AddMenuProps) => {
   return (
     <View>
       {!display && (
-        <Pressable onPress={() => setDisplay(!display)}>
-          <Text>Add a goal</Text>
+        <Pressable
+          style={[styles.buttonWrapper, { margin: "1%" }]}
+          onPress={() => setDisplay(!display)}
+        >
+          <Text style={[styles.button]}>Add a goal</Text>
         </Pressable>
       )}
+
       {display && (
-        <View>
+        <View style={styles.container}>
           <TextInput
             style={styles.input}
             placeholder="Enter your goal"
@@ -32,7 +36,9 @@ const AddMenu = (props: AddMenuProps) => {
           ></TextInput>
 
           <View>
-            <Text>Select when you want to complete this goal</Text>
+            <Text style={styles.header}>
+              Select when you want to complete this goal
+            </Text>
 
             {["daily", "monthly", "yearly"].map((option) => (
               <View
@@ -44,7 +50,7 @@ const AddMenu = (props: AddMenuProps) => {
                 }}
               >
                 <RadioButton
-                  color="pink"
+                  color="black"
                   value={option}
                   status={newGoal.timeLine === option ? "checked" : "unchecked"}
                   onPress={() =>
@@ -59,8 +65,20 @@ const AddMenu = (props: AddMenuProps) => {
             ))}
           </View>
 
-          <Pressable onPress={() => console.log("newgoal =", newGoal)}>
-            <Text>add new goal</Text>
+          <Pressable
+            style={styles.buttonWrapper}
+            onPress={() => console.log("newgoal =", newGoal)}
+          >
+            <Text style={styles.button}>add new goal</Text>
+          </Pressable>
+          <Pressable
+            style={[
+              styles.buttonWrapper,
+              { backgroundColor: "#FF5858", marginTop: 5 },
+            ]}
+            onPress={() => setDisplay(!display)}
+          >
+            <Text style={[styles.button]}>Cancel</Text>
           </Pressable>
         </View>
         // </Pressable>
@@ -72,9 +90,29 @@ const AddMenu = (props: AddMenuProps) => {
 export default AddMenu;
 
 const styles = StyleSheet.create({
+  container: {
+    margin: "1%",
+    backgroundColor: "pink",
+    borderRadius: 5,
+    padding: 5,
+  },
   input: {
     borderWidth: 1,
     borderRadius: 5,
     padding: 10,
+  },
+  header: {
+    fontSize: 16,
+    marginTop: 5,
+  },
+  buttonWrapper: {
+    backgroundColor: "#C0FDF2",
+    padding: 10,
+    borderRadius: 5,
+  },
+  button: {
+    fontSize: 20,
+    textAlign: "center",
+    textTransform: "capitalize",
   },
 });
