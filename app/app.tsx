@@ -8,11 +8,7 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  addGoal,
-  changeCompleted,
-  incrementByAmount,
-} from "./src/store/slices/goalsSlice";
+import { changeCompleted } from "./src/store/slices/goalsSlice";
 import AddMenu from "./components/AddMenu";
 
 type ItemData = {
