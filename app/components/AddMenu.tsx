@@ -24,35 +24,43 @@ const AddMenu = (props: AddMenuProps) => {
         </Pressable>
       )}
       {display && (
-        // <Pressable onPress={() => setDisplay(!display)}>
         <View>
           <TextInput
+            style={styles.input}
+            placeholder="Enter your goal"
             onChangeText={(text) => setNewGoal({ ...newGoal, name: text })}
           ></TextInput>
-          {["daily", "monthly", "yearly"].map((option) => (
-            <View
-              key={option}
-              style={{
-                flexDirection: "row",
-                alignItems: "center",
-                marginBottom: 10,
-              }}
-            >
-              <RadioButton
-                value={option}
-                status={newGoal.timeLine === option ? "checked" : "unchecked"}
-                onPress={() =>
-                  setNewGoal({
-                    ...newGoal,
-                    timeLine: option as Goal["timeLine"],
-                  })
-                }
-              />
-              <Text>{option}</Text>
-            </View>
-          ))}
+
+          <View>
+            <Text>Select when you want to complete this goal</Text>
+
+            {["daily", "monthly", "yearly"].map((option) => (
+              <View
+                key={option}
+                style={{
+                  flexDirection: "row",
+                  alignItems: "center",
+                  marginBottom: 10,
+                }}
+              >
+                <RadioButton
+                  color="pink"
+                  value={option}
+                  status={newGoal.timeLine === option ? "checked" : "unchecked"}
+                  onPress={() =>
+                    setNewGoal({
+                      ...newGoal,
+                      timeLine: option as Goal["timeLine"],
+                    })
+                  }
+                />
+                <Text>{option}</Text>
+              </View>
+            ))}
+          </View>
+
           <Pressable onPress={() => console.log("newgoal =", newGoal)}>
-            <Text>Print new goal</Text>
+            <Text>add new goal</Text>
           </Pressable>
         </View>
         // </Pressable>
@@ -63,4 +71,10 @@ const AddMenu = (props: AddMenuProps) => {
 
 export default AddMenu;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  input: {
+    borderWidth: 1,
+    borderRadius: 5,
+    padding: 10,
+  },
+});
