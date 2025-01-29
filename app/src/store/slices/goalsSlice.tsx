@@ -64,13 +64,14 @@ const exampleSlice = createSlice({
 
       state.allGoals = newGoals;
     },
-    incrementByAmount: (state, action) => {
-      //   state.value += action.payload;
+    deleteGoal: (state, action) => {
+      state.allGoals = state.allGoals.filter(
+        (goal) => goal.name !== action.payload.name
+      );
     },
   },
 });
 
-export const { addGoal, changeCompleted, incrementByAmount } =
-  exampleSlice.actions;
+export const { addGoal, changeCompleted, deleteGoal } = exampleSlice.actions;
 
 export default exampleSlice.reducer;
