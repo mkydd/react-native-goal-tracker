@@ -50,7 +50,7 @@ const exampleSlice = createSlice({
   initialState,
   reducers: {
     addGoal: (state, action) => {
-      state.allGoals.push(action.payload);
+      state.allGoals = [action.payload, ...state.allGoals];
     },
     changeCompleted: (state, action) => {
       let newGoals = [...state.allGoals];
