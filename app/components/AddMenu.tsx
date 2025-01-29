@@ -105,12 +105,12 @@ const styles = StyleSheet.create({
   container: {
     margin: "1%",
     backgroundColor: "pink",
-    borderRadius: 5,
+    borderRadius: 15,
     padding: 5,
   },
   input: {
     borderWidth: 1,
-    borderRadius: 5,
+    borderRadius: 15,
     padding: 10,
   },
   header: {
@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
   buttonWrapper: {
     backgroundColor: "#C0FDF2",
     padding: 10,
-    borderRadius: 5,
+    borderRadius: 15,
   },
   button: {
     fontSize: 20,
