@@ -1,6 +1,8 @@
 import { Pressable, StyleSheet, Text, View, TextInput } from "react-native";
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { RadioButton, Text as PaperText } from "react-native-paper";
+import { addGoal } from "../src/store/slices/goalsSlice";
 
 interface AddMenuProps {
   display: boolean;
@@ -10,11 +12,17 @@ interface AddMenuProps {
 interface Goal {
   name: string;
   timeLine: "daily" | "monthly" | "yearly" | "";
+  completed: boolean;
 }
 
 const AddMenu = (props: AddMenuProps) => {
   const { display, setDisplay } = props;
-  const [newGoal, setNewGoal] = useState<Goal>({ name: "", timeLine: "" });
+  const [newGoal, setNewGoal] = useState<Goal>({
+    name: "",
+    timeLine: "",
+    completed: false,
+  });
+  const dispatch = useDispatch();
 
   return (
     <View>
@@ -67,7 +75,11 @@ const AddMenu = (props: AddMenuProps) => {
 
           <Pressable
             style={styles.buttonWrapper}
-            onPress={() => console.log("newgoal =", newGoal)}
+            onPress={() => {
+              dispatch(addGoal(newGoal));
+              setNewGoal({ name: "", timeLine: "", completed: false });
+              setDisplay(false);
+            }}
           >
             <Text style={styles.button}>add new goal</Text>
           </Pressable>
