@@ -16,6 +16,8 @@ type ItemData = {
   name: string;
   timeLine: string;
   completed: boolean;
+  count: number;
+  total: 1 | 12 | 365;
 };
 
 type TimeLine = "daily" | "monthly" | "yearly";
@@ -42,7 +44,7 @@ const App = () => {
         <Text
           style={[item.completed ? { textDecorationLine: "line-through" } : {}]}
         >
-          {item.name}
+          {item.name} ({item.count}/{item.total})
         </Text>
       </Pressable>
     );

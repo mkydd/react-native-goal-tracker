@@ -1,7 +1,7 @@
 import { Pressable, StyleSheet, Text, View, TextInput } from "react-native";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { RadioButton, Text as PaperText } from "react-native-paper";
+import { RadioButton } from "react-native-paper";
 import { addGoal } from "../src/store/slices/goalsSlice";
 
 interface AddMenuProps {
@@ -13,6 +13,8 @@ interface Goal {
   name: string;
   timeLine: "daily" | "monthly" | "yearly" | "";
   completed: boolean;
+  count: number;
+  total: number;
 }
 
 const AddMenu = (props: AddMenuProps) => {
@@ -21,8 +23,23 @@ const AddMenu = (props: AddMenuProps) => {
     name: "",
     timeLine: "",
     completed: false,
+    count: 0,
+    total: 365,
   });
   const dispatch = useDispatch();
+
+  function setTotal(option: string): number {
+    switch (option) {
+      case "daily":
+        return 365;
+      case "monthly":
+        return 12;
+      case "yearly":
+        return 1;
+      default:
+        return 365;
+    }
+  }
 
   return (
     <View>
@@ -61,12 +78,13 @@ const AddMenu = (props: AddMenuProps) => {
                   color="black"
                   value={option}
                   status={newGoal.timeLine === option ? "checked" : "unchecked"}
-                  onPress={() =>
+                  onPress={() => {
                     setNewGoal({
                       ...newGoal,
                       timeLine: option as Goal["timeLine"],
-                    })
-                  }
+                      total: setTotal(option),
+                    });
+                  }}
                 />
                 <Text>{option}</Text>
               </View>
@@ -76,8 +94,15 @@ const AddMenu = (props: AddMenuProps) => {
           <Pressable
             style={styles.buttonWrapper}
             onPress={() => {
+              console.log("newGoal ==", newGoal);
               dispatch(addGoal(newGoal));
-              setNewGoal({ name: "", timeLine: "", completed: false });
+              setNewGoal({
+                name: "",
+                timeLine: "",
+                completed: false,
+                count: 0,
+                total: 365,
+              });
               setDisplay(false);
             }}
           >
