@@ -54,6 +54,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     borderWidth: 1,
+    backgroundColor: "black",
   },
   button: {
     color: "white",
