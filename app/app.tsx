@@ -11,6 +11,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { changeCompleted, deleteGoal } from "./src/store/slices/goalsSlice";
 import AddMenu from "./components/AddMenu";
 import { Button } from "react-native";
+import NavBar from "./components/NavBar";
 
 type ItemData = {
   name: string;
@@ -18,8 +19,11 @@ type ItemData = {
   completed: boolean;
 };
 
+type TimeLine = "daily" | "monthly" | "yearly";
+
 const App = () => {
   const [showAddMenu, setShowAddMenu] = useState<boolean>(false);
+  const [displayTimeLine, setDisplayTimeLine] = useState<TimeLine>("daily");
   const allGoals = useSelector((state: any) => state.goals.allGoals);
   const dispatch = useDispatch();
 
@@ -46,15 +50,17 @@ const App = () => {
 
   return (
     <View style={styles.container}>
-      <AddMenu display={showAddMenu} setDisplay={setShowAddMenu} />
-
       <SafeAreaView style={styles.safeView}>
+        <AddMenu display={showAddMenu} setDisplay={setShowAddMenu} />
+
         <FlatList
           data={allGoals}
           renderItem={renderItem}
           numColumns={2}
           columnWrapperStyle={styles.row}
         />
+
+        <NavBar timeLine={displayTimeLine} />
       </SafeAreaView>
     </View>
   );
