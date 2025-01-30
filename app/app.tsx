@@ -10,7 +10,6 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { changeCompleted, deleteGoal } from "./src/store/slices/goalsSlice";
 import AddMenu from "./components/AddMenu";
-import { Button } from "react-native";
 import NavBar from "./components/NavBar";
 
 type ItemData = {
@@ -24,6 +23,7 @@ type TimeLine = "daily" | "monthly" | "yearly";
 const App = () => {
   const [showAddMenu, setShowAddMenu] = useState<boolean>(false);
   const [displayTimeLine, setDisplayTimeLine] = useState<TimeLine>("daily");
+
   const allGoals = useSelector((state: any) => state.goals.allGoals);
   const dispatch = useDispatch();
 
@@ -54,13 +54,15 @@ const App = () => {
         <AddMenu display={showAddMenu} setDisplay={setShowAddMenu} />
 
         <FlatList
-          data={allGoals}
+          data={allGoals.filter(
+            (goal: ItemData) => goal.timeLine === displayTimeLine
+          )}
           renderItem={renderItem}
           numColumns={2}
           columnWrapperStyle={styles.row}
         />
 
-        <NavBar timeLine={displayTimeLine} />
+        <NavBar setTimeLine={setDisplayTimeLine} />
       </SafeAreaView>
     </View>
   );
