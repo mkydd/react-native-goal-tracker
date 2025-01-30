@@ -4,6 +4,8 @@ interface Goal {
   name: string;
   timeLine: string;
   completed: boolean;
+  count: number;
+  total: 1 | 12 | 365;
 }
 
 interface GoalsState {
@@ -16,31 +18,43 @@ const initialState: GoalsState = {
       name: "stretch",
       timeLine: "daily",
       completed: false,
+      count: 0,
+      total: 365,
     },
     {
       name: "read",
       timeLine: "daily",
       completed: false,
+      count: 0,
+      total: 365,
     },
     {
       name: "workout",
       timeLine: "daily",
       completed: false,
+      count: 0,
+      total: 365,
     },
     {
       name: "run",
       timeLine: "daily",
       completed: false,
+      count: 0,
+      total: 365,
     },
     {
       name: "eat healthy",
       timeLine: "daily",
       completed: false,
+      count: 0,
+      total: 365,
     },
     {
       name: "walk",
       timeLine: "daily",
       completed: false,
+      count: 0,
+      total: 365,
     },
   ],
 };
