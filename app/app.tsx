@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "white",
+    backgroundColor: "#e4e4e4",
   },
   goalName: {
     textTransform: "capitalize",

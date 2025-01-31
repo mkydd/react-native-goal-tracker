@@ -128,7 +128,7 @@ export default AddMenu;
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "pink",
+    backgroundColor: "#e4e4e4",
     borderRadius: 15,
     padding: 5,
   },
