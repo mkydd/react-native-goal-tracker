@@ -56,6 +56,13 @@ const initialState: GoalsState = {
       count: 0,
       total: 365,
     },
+    {
+      name: "run",
+      timeLine: "daily",
+      completed: false,
+      count: 0,
+      total: 365,
+    },
   ],
 };
 
