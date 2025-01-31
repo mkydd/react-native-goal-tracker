@@ -108,7 +108,7 @@ const exampleSlice = createSlice({
       const goalToUpdate = newGoals.find(
         (goal) => goal.name === action.payload.name
       );
-      if (goalToUpdate) {
+      if (goalToUpdate && goalToUpdate.count > 0) {
         goalToUpdate.count -= 1;
       }
 
