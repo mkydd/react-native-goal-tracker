@@ -31,22 +31,32 @@ const App = () => {
 
   const renderItem = ({ item }: { item: ItemData }) => {
     return (
-      <Pressable
-        style={styles.listItem}
-        onPress={() => dispatch(changeCompleted(item))}
-      >
-        <Pressable
-          style={styles.buttonWrapper}
-          onPress={() => dispatch(deleteGoal(item))}
-        >
-          <Text style={styles.buttonText}>X</Text>
+      <View style={styles.listItem}>
+        <Pressable onPress={() => dispatch(changeCompleted(item))}>
+          <Text
+            style={[
+              styles.goalName,
+              item.completed ? { textDecorationLine: "line-through" } : {},
+            ]}
+          >
+            {item.name}
+          </Text>
         </Pressable>
-        <Text
-          style={[item.completed ? { textDecorationLine: "line-through" } : {}]}
-        >
-          {item.name} ({item.count}/{item.total})
+        <Text style={styles.progressBar}>
+          ({item.count}/{item.total})
         </Text>
-      </Pressable>
+        <View style={styles.itemActions}>
+          <Pressable style={{}} onPress={() => {}}>
+            <Text style={styles.buttonText}>-</Text>
+          </Pressable>
+          <Pressable style={{}} onPress={() => dispatch(deleteGoal(item))}>
+            <Text style={styles.buttonText}>x</Text>
+          </Pressable>
+          <Pressable style={{}} onPress={() => {}}>
+            <Text style={styles.buttonText}>+</Text>
+          </Pressable>
+        </View>
+      </View>
     );
   };
 
@@ -61,7 +71,6 @@ const App = () => {
           )}
           renderItem={renderItem}
           numColumns={2}
-          columnWrapperStyle={styles.row}
         />
 
         <NavBar setTimeLine={setDisplayTimeLine} />
@@ -80,20 +89,12 @@ const styles = StyleSheet.create({
   },
   safeView: {
     flex: 1,
-  },
-  buttonWrapper: {
-    position: "absolute",
-    margin: 20,
-    top: 0,
-    right: 0,
-  },
-  buttonText: {
-    color: "red",
+    margin: 5,
   },
   listItem: {
-    width: "48%",
-    margin: "1%",
-    aspectRatio: 1,
+    width: "100%",
+    padding: 8,
+    marginBlock: 2,
     borderWidth: 1,
     borderRadius: 15,
     display: "flex",
@@ -101,7 +102,19 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "pink",
   },
-  row: {
-    // gap: "2%",
+  goalName: {
+    textTransform: "capitalize",
+  },
+  buttonText: {
+    color: "red",
+  },
+  progressBar: {
+    marginBlock: 8,
+  },
+  itemActions: {
+    flex: 1,
+    width: "100%",
+    justifyContent: "space-around",
+    flexDirection: "row",
   },
 });
