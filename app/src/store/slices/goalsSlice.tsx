@@ -102,10 +102,27 @@ const exampleSlice = createSlice({
 
       state.allGoals = newGoals;
     },
+    decrementCount: (state, action) => {
+      let newGoals = [...state.allGoals];
+
+      const goalToUpdate = newGoals.find(
+        (goal) => goal.name === action.payload.name
+      );
+      if (goalToUpdate) {
+        goalToUpdate.count -= 1;
+      }
+
+      state.allGoals = newGoals;
+    },
   },
 });
 
-export const { addGoal, changeCompleted, deleteGoal, incrementCount } =
-  exampleSlice.actions;
+export const {
+  addGoal,
+  changeCompleted,
+  deleteGoal,
+  incrementCount,
+  decrementCount,
+} = exampleSlice.actions;
 
 export default exampleSlice.reducer;
