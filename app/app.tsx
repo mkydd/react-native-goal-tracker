@@ -52,13 +52,13 @@ const App = () => {
         </Text>
         <View style={styles.itemActions}>
           <Pressable style={{}} onPress={() => dispatch(decrementCount(item))}>
-            <Text style={styles.buttonText}>-</Text>
+            <Text style={[styles.buttonText, { color: "black" }]}>-</Text>
           </Pressable>
           <Pressable style={{}} onPress={() => dispatch(deleteGoal(item))}>
             <Text style={styles.buttonText}>x</Text>
           </Pressable>
           <Pressable style={{}} onPress={() => dispatch(incrementCount(item))}>
-            <Text style={styles.buttonText}>+</Text>
+            <Text style={[styles.buttonText, { color: "black" }]}>+</Text>
           </Pressable>
         </View>
       </View>
@@ -75,7 +75,6 @@ const App = () => {
             (goal: ItemData) => goal.timeLine === displayTimeLine
           )}
           renderItem={renderItem}
-          //   contentContainerStyle={{ paddingBottom: 100 }}
           style={styles.list}
         />
 
@@ -116,6 +115,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: "red",
+    fontSize: 20,
   },
   progressBar: {
     marginBlock: 8,
