@@ -14,7 +14,7 @@ const NavBar = (props: NavBarProps) => {
   const insets = useSafeAreaInsets();
 
   return (
-    <View style={[styles.container, { bottom: insets.bottom }]}>
+    <View style={[styles.container]}>
       <Pressable
         style={styles.buttonWrapper}
         onPress={() => setTimeLine("daily")}
@@ -46,9 +46,9 @@ const styles = StyleSheet.create({
     width: "100%",
     flex: 1,
     flexDirection: "row",
+    padding: 15,
+    paddingBottom: 25,
     backgroundColor: "black",
-    padding: 10,
-    // marginBlock: 10,
   },
   buttonWrapper: {
     flex: 1,
