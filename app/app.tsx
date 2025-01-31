@@ -70,7 +70,8 @@ const App = () => {
             (goal: ItemData) => goal.timeLine === displayTimeLine
           )}
           renderItem={renderItem}
-          numColumns={2}
+          //   contentContainerStyle={{ paddingBottom: 100 }}
+          style={styles.list}
         />
 
         <NavBar setTimeLine={setDisplayTimeLine} />
@@ -91,8 +92,11 @@ const styles = StyleSheet.create({
     flex: 1,
     margin: 5,
   },
+  list: {
+    flex: 1,
+    paddingBottom: "100%",
+  },
   listItem: {
-    width: "100%",
     padding: 8,
     marginBlock: 2,
     borderWidth: 1,
