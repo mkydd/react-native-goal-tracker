@@ -57,6 +57,7 @@ const AddMenu = (props: AddMenuProps) => {
           <TextInput
             style={styles.input}
             placeholder="Enter your goal"
+            placeholderTextColor="#656565"
             onChangeText={(text) => setNewGoal({ ...newGoal, name: text })}
           ></TextInput>
 
@@ -136,6 +137,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 15,
     padding: 10,
+    color: "red",
   },
   header: {
     fontSize: 16,
