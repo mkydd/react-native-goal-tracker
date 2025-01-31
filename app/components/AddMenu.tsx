@@ -137,7 +137,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 15,
     padding: 10,
-    color: "red",
+    color: "black",
   },
   header: {
     fontSize: 16,
