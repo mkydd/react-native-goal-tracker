@@ -90,9 +90,22 @@ const exampleSlice = createSlice({
         (goal) => goal.name !== action.payload.name
       );
     },
+    incrementCount: (state, action) => {
+      let newGoals = [...state.allGoals];
+
+      const goalToUpdate = newGoals.find(
+        (goal) => goal.name === action.payload.name
+      );
+      if (goalToUpdate) {
+        goalToUpdate.count += 1;
+      }
+
+      state.allGoals = newGoals;
+    },
   },
 });
 
-export const { addGoal, changeCompleted, deleteGoal } = exampleSlice.actions;
+export const { addGoal, changeCompleted, deleteGoal, incrementCount } =
+  exampleSlice.actions;
 
 export default exampleSlice.reducer;

@@ -8,7 +8,11 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { changeCompleted, deleteGoal } from "./src/store/slices/goalsSlice";
+import {
+  changeCompleted,
+  deleteGoal,
+  incrementCount,
+} from "./src/store/slices/goalsSlice";
 import AddMenu from "./components/AddMenu";
 import NavBar from "./components/NavBar";
 
@@ -52,7 +56,7 @@ const App = () => {
           <Pressable style={{}} onPress={() => dispatch(deleteGoal(item))}>
             <Text style={styles.buttonText}>x</Text>
           </Pressable>
-          <Pressable style={{}} onPress={() => {}}>
+          <Pressable style={{}} onPress={() => dispatch(incrementCount(item))}>
             <Text style={styles.buttonText}>+</Text>
           </Pressable>
         </View>
