@@ -90,11 +90,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 2,
+    paddingBottom: 0,
     backgroundColor: "black",
   },
   safeView: {
     flex: 1,
     margin: 5,
+    marginBottom: 0,
   },
   list: {
     flex: 1,
