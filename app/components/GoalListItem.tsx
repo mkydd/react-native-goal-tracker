@@ -31,16 +31,20 @@ const GoalListItem = ({ item }: { item: ItemData }) => {
           {item.name}
         </Text>
       </Pressable>
+
       <Text style={styles.progressBar}>
         ({item.count}/{item.total})
       </Text>
+
       <View style={styles.itemActions}>
         <Pressable style={{}} onPress={() => dispatch(decrementCount(item))}>
           <Text style={[styles.buttonText, { color: "#037fff" }]}>-</Text>
         </Pressable>
+
         <Pressable style={{}} onPress={() => dispatch(deleteGoal(item))}>
           <Text style={styles.buttonText}>x</Text>
         </Pressable>
+
         <Pressable style={{}} onPress={() => dispatch(incrementCount(item))}>
           <Text style={[styles.buttonText, { color: "#037fff" }]}>+</Text>
         </Pressable>
