@@ -8,14 +8,10 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  changeCompleted,
-  deleteGoal,
-  incrementCount,
-  decrementCount,
-} from "./src/store/slices/goalsSlice";
+
 import AddMenu from "./components/AddMenu";
 import NavBar from "./components/NavBar";
+import GoalListItem from "./components/GoalListItem";
 
 type ItemData = {
   name: string;
@@ -32,38 +28,6 @@ const App = () => {
   const [displayTimeLine, setDisplayTimeLine] = useState<TimeLine>("daily");
 
   const allGoals = useSelector((state: any) => state.goals.allGoals);
-  const dispatch = useDispatch();
-
-  const renderItem = ({ item }: { item: ItemData }) => {
-    return (
-      <View style={styles.listItem}>
-        <Pressable onPress={() => dispatch(changeCompleted(item))}>
-          <Text
-            style={[
-              styles.goalName,
-              item.completed ? { textDecorationLine: "line-through" } : {},
-            ]}
-          >
-            {item.name}
-          </Text>
-        </Pressable>
-        <Text style={styles.progressBar}>
-          ({item.count}/{item.total})
-        </Text>
-        <View style={styles.itemActions}>
-          <Pressable style={{}} onPress={() => dispatch(decrementCount(item))}>
-            <Text style={[styles.buttonText, { color: "#037fff" }]}>-</Text>
-          </Pressable>
-          <Pressable style={{}} onPress={() => dispatch(deleteGoal(item))}>
-            <Text style={styles.buttonText}>x</Text>
-          </Pressable>
-          <Pressable style={{}} onPress={() => dispatch(incrementCount(item))}>
-            <Text style={[styles.buttonText, { color: "#037fff" }]}>+</Text>
-          </Pressable>
-        </View>
-      </View>
-    );
-  };
 
   return (
     <View style={styles.container}>
@@ -74,7 +38,7 @@ const App = () => {
           data={allGoals.filter(
             (goal: ItemData) => goal.timeLine === displayTimeLine
           )}
-          renderItem={renderItem}
+          renderItem={({ item }) => <GoalListItem item={item} />}
           style={styles.list}
         />
 
@@ -101,31 +65,5 @@ const styles = StyleSheet.create({
   list: {
     flex: 1,
     paddingBottom: "100%",
-  },
-  listItem: {
-    padding: 8,
-    marginBlock: 2,
-    borderWidth: 1,
-    borderRadius: 15,
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#e4e4e4",
-  },
-  goalName: {
-    textTransform: "capitalize",
-  },
-  buttonText: {
-    color: "red",
-    fontSize: 20,
-  },
-  progressBar: {
-    marginBlock: 8,
-  },
-  itemActions: {
-    flex: 1,
-    width: "100%",
-    justifyContent: "space-around",
-    flexDirection: "row",
   },
 });
