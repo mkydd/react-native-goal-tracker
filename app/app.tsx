@@ -12,16 +12,7 @@ import { useSelector, useDispatch } from "react-redux";
 import AddMenu from "./components/AddMenu";
 import NavBar from "./components/NavBar";
 import GoalListItem from "./components/GoalListItem";
-
-type ItemData = {
-  name: string;
-  timeLine: string;
-  completed: boolean;
-  count: number;
-  total: 1 | 12 | 365;
-};
-
-type TimeLine = "daily" | "monthly" | "yearly";
+import { TimeLine, ItemData } from "./types/goals";
 
 const App = () => {
   const [showAddMenu, setShowAddMenu] = useState<boolean>(false);

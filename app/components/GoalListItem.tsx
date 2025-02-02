@@ -7,14 +7,7 @@ import {
   incrementCount,
 } from "../src/store/slices/goalsSlice";
 import { useDispatch } from "react-redux";
-
-type ItemData = {
-  name: string;
-  timeLine: string;
-  completed: boolean;
-  count: number;
-  total: 1 | 12 | 365;
-};
+import { ItemData } from "../types/goals";
 
 const GoalListItem = ({ item }: { item: ItemData }) => {
   const dispatch = useDispatch();
