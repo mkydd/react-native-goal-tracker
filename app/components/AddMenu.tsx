@@ -2,19 +2,13 @@ import { Pressable, StyleSheet, Text, View, TextInput } from "react-native";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { RadioButton } from "react-native-paper";
+
 import { addGoal } from "../src/store/slices/goalsSlice";
+import { Goal } from "../types/goals";
 
 interface AddMenuProps {
   display: boolean;
   setDisplay: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-interface Goal {
-  name: string;
-  timeLine: "daily" | "monthly" | "yearly" | "";
-  completed: boolean;
-  count: number;
-  total: number;
 }
 
 const AddMenu = (props: AddMenuProps) => {
@@ -119,7 +113,6 @@ const AddMenu = (props: AddMenuProps) => {
             <Text style={[styles.button]}>Cancel</Text>
           </Pressable>
         </View>
-        // </Pressable>
       )}
     </View>
   );
