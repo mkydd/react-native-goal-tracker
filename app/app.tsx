@@ -23,6 +23,8 @@ const App = () => {
   return (
     <View style={styles.container}>
       <SafeAreaView style={styles.safeView}>
+        <Text style={styles.header}>MK Goal Tracker</Text>
+
         <AddMenu display={showAddMenu} setDisplay={setShowAddMenu} />
 
         <FlatList
@@ -52,6 +54,12 @@ const styles = StyleSheet.create({
     flex: 1,
     margin: 5,
     marginBottom: 0,
+  },
+  header: {
+    color: "white",
+    fontSize: 36,
+    textAlign: "center",
+    margin: 10,
   },
   list: {
     flex: 1,
