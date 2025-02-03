@@ -30,7 +30,10 @@ const GoalListItem = ({ item }: { item: ItemData }) => {
           <View
             style={[
               styles.progressBar,
-              { width: `${(item.count / item.total) * 100}%` },
+              {
+                width: `${(item.count / item.total) * 100}%`,
+                maxWidth: "100%",
+              },
             ]}
           />
           <Text style={styles.progressBarCount}>{item.count}</Text>
