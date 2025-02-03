@@ -1,4 +1,4 @@
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { Button, Pressable, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import {
   changeCompleted,
@@ -24,10 +24,19 @@ const GoalListItem = ({ item }: { item: ItemData }) => {
           {item.name}
         </Text>
       </Pressable>
-
-      <Text style={styles.progressBar}>
-        ({item.count}/{item.total})
-      </Text>
+      <View style={styles.progressBarContainer}>
+        <Text>0</Text>
+        <View style={styles.progressBarWrapper}>
+          <View
+            style={[
+              styles.progressBar,
+              { width: `${(item.count / item.total) * 100}%` },
+            ]}
+          />
+          <Text style={styles.progressBarCount}>{item.count}</Text>
+        </View>
+        <Text>{item.total}</Text>
+      </View>
 
       <View style={styles.itemActions}>
         <Pressable style={{}} onPress={() => dispatch(decrementCount(item))}>
@@ -62,8 +71,30 @@ const styles = StyleSheet.create({
   goalName: {
     textTransform: "capitalize",
   },
+  progressBarContainer: {
+    width: "100%",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: 5,
+  },
+  progressBarWrapper: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    width: "65%",
+    borderWidth: 1,
+    borderColor: "#037fff",
+    borderRadius: 25,
+  },
   progressBar: {
-    marginBlock: 8,
+    backgroundColor: "#037fff",
+    borderRadius: 25,
+    height: 20,
+  },
+  progressBarCount: {
+    position: "absolute",
   },
   itemActions: {
     flex: 1,
