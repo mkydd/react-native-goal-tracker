@@ -12,7 +12,7 @@ import { useSelector } from "react-redux";
 import AddMenu from "./components/AddMenu";
 import NavBar from "./components/NavBar";
 import GoalListItem from "./components/GoalListItem";
-import { TimeLine, ItemData } from "./types/goals";
+import { TimeLine, ItemData } from "../types/goals";
 
 const App = () => {
   const [showAddMenu, setShowAddMenu] = useState<boolean>(false);

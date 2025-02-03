@@ -7,7 +7,7 @@ import {
   incrementCount,
 } from "../src/store/slices/goalsSlice";
 import { useDispatch } from "react-redux";
-import { ItemData } from "../types/goals";
+import { ItemData } from "../../types/goals";
 import ProgressBar from "./ProgressBar";
 
 const GoalListItem = ({ item }: { item: ItemData }) => {

@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 
-import { ItemData } from "../types/goals";
+import { ItemData } from "../../types/goals";
 
 const ProgressBar = ({ item }: { item: ItemData }) => {
   return (

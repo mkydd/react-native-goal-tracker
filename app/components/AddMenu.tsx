@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { RadioButton } from "react-native-paper";
 
 import { addGoal } from "../src/store/slices/goalsSlice";
-import { Goal } from "../types/goals";
+import { Goal } from "../../types/goals";
 
 interface AddMenuProps {
   display: boolean;
