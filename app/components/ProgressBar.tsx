@@ -17,8 +17,8 @@ const ProgressBar = ({ item }: { item: ItemData }) => {
             },
           ]}
         />
-        <Text style={styles.progressBarCount}>{item.count}</Text>
       </View>
+      <Text style={styles.progressBarCount}>{item.count}</Text>
       <Text>{item.total}</Text>
     </View>
   );
