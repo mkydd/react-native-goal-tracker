@@ -29,15 +29,24 @@ const GoalListItem = ({ item }: { item: ItemData }) => {
       <ProgressBar item={item} />
 
       <View style={styles.itemActions}>
-        <Pressable style={{}} onPress={() => dispatch(decrementCount(item))}>
+        <Pressable
+          style={styles.buttonWrapper}
+          onPress={() => dispatch(decrementCount(item))}
+        >
           <Text style={[styles.buttonText, { color: "#037fff" }]}>-</Text>
         </Pressable>
 
-        <Pressable style={{}} onPress={() => dispatch(deleteGoal(item))}>
+        <Pressable
+          style={styles.buttonWrapper}
+          onPress={() => dispatch(deleteGoal(item))}
+        >
           <Text style={styles.buttonText}>x</Text>
         </Pressable>
 
-        <Pressable style={{}} onPress={() => dispatch(incrementCount(item))}>
+        <Pressable
+          style={styles.buttonWrapper}
+          onPress={() => dispatch(incrementCount(item))}
+        >
           <Text style={[styles.buttonText, { color: "#037fff" }]}>+</Text>
         </Pressable>
       </View>
@@ -67,8 +76,13 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
     flexDirection: "row",
   },
+  buttonWrapper: {
+    width: "25%",
+  },
   buttonText: {
+    textAlign: "center",
     color: "red",
     fontSize: 20,
+    paddingBlock: 5,
   },
 });
