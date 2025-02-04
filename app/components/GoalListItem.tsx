@@ -17,10 +17,7 @@ const GoalListItem = ({ item }: { item: ItemData }) => {
     <View style={styles.listItem}>
       <Pressable onPress={() => dispatch(changeCompleted(item))}>
         <Text
-          style={[
-            styles.goalName,
-            item.completed ? { textDecorationLine: "line-through" } : {},
-          ]}
+          style={[item.completed ? { textDecorationLine: "line-through" } : {}]}
         >
           {item.name}
         </Text>
