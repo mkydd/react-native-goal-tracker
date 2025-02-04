@@ -67,9 +67,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#e4e4e4",
   },
-  goalName: {
-    textTransform: "capitalize",
-  },
   itemActions: {
     flex: 1,
     width: "100%",
