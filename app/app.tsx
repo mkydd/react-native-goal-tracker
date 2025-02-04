@@ -35,7 +35,10 @@ const App = () => {
           style={styles.list}
         />
 
-        <NavBar setTimeLine={setDisplayTimeLine} />
+        <NavBar
+          setTimeLine={setDisplayTimeLine}
+          currTimeline={displayTimeLine}
+        />
       </SafeAreaView>
     </View>
   );

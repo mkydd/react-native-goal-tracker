@@ -6,33 +6,32 @@ type TimeLine = "daily" | "monthly" | "yearly";
 
 interface NavBarProps {
   setTimeLine: React.Dispatch<React.SetStateAction<TimeLine>>;
+  currTimeline: TimeLine;
 }
 
 const NavBar = (props: NavBarProps) => {
-  const { setTimeLine } = props;
+  const { setTimeLine, currTimeline } = props;
 
   const insets = useSafeAreaInsets();
 
   return (
     <View style={[styles.container]}>
-      <Pressable
-        style={styles.buttonWrapper}
-        onPress={() => setTimeLine("daily")}
-      >
-        <Text style={styles.button}>Daily</Text>
-      </Pressable>
-      <Pressable
-        style={styles.buttonWrapper}
-        onPress={() => setTimeLine("monthly")}
-      >
-        <Text style={styles.button}>Monthly</Text>
-      </Pressable>
-      <Pressable
-        style={styles.buttonWrapper}
-        onPress={() => setTimeLine("yearly")}
-      >
-        <Text style={styles.button}>Yearly</Text>
-      </Pressable>
+      {["daily", "monthly", "yearly"].map((option) => (
+        <Pressable
+          key={option}
+          style={styles.buttonWrapper}
+          onPress={() => setTimeLine(option as TimeLine)}
+        >
+          <Text
+            style={[
+              styles.button,
+              { color: currTimeline === option ? "#037fff" : "white" },
+            ]}
+          >
+            {option.charAt(0).toUpperCase() + option.slice(1)}
+          </Text>
+        </Pressable>
+      ))}
     </View>
   );
 };
