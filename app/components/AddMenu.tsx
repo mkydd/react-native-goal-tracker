@@ -69,8 +69,9 @@ const AddMenu = (props: AddMenuProps) => {
                   marginBottom: 10,
                 }}
               >
-                <RadioButton
-                  color="black"
+                <RadioButton.Android
+                  color="#037fff"
+                  uncheckedColor="#037fff"
                   value={option}
                   status={newGoal.timeLine === option ? "checked" : "unchecked"}
                   onPress={() => {
